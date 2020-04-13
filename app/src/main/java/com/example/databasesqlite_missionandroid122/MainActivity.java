@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         DatabaseHandler databaseHandler = new DatabaseHandler(MainActivity.this);
 
+        //this wont work because this Id was deleted later
         Contact james = new Contact();
         james.setName("james");
         james.setContactNumber("635471080");
@@ -27,13 +28,30 @@ public class MainActivity extends AppCompatActivity {
         Contact mathew = new Contact();
         mathew.setName("mathew");
         mathew.setContactNumber("5361774152");
-        
+
+        //once added then comment out
 //        databaseHandler.addContact(james);
 //        databaseHandler.addContact(mathew);
 
+        //to get single contact
+/*        Contact singleContact = databaseHandler.getContact(1);
+        Log.d("SingleContact", "onCreate: "+singleContact.getName());
+        //update a contact,doing update to 1
+        singleContact.setName("newJames");
+        singleContact.setContactNumber("0096541326");
+        //updating
+        int updateContact = databaseHandler.updateContact(singleContact);
+        Log.d("Update", "onCreate: "+updateContact);
+*/
+
+        //delete a contact
+        //once row 1 is deleted, make sure to comment out singleContact, and comment out deleteContact()
+//        databaseHandler.deleteContact(singleContact);
+
+
             List<Contact> contactList = databaseHandler.getAllContact();
             for (Contact contact : contactList){
-                Log.d("MainActivity", "onCreate: "+contact.getId()+","+contact.getName()+", "+contact.getContactNumber());
+                Log.d("AllContact", "onCreate: "+contact.getId()+","+contact.getName()+", "+contact.getContactNumber());
             }
 
 

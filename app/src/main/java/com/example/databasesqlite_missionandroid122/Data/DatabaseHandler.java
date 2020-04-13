@@ -72,7 +72,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     //get contact
-    public Contact contact(int id){
+    public Contact getContact(int id){
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
 
         //add cursor to iterate
@@ -112,4 +112,29 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
         return contactList;
     }
+
+    //update contact
+
+    public int updateContact(Contact contact){
+
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(Util.KEY_NAME,contact.getName());
+        contentValues.put(Util.KEY_CONTACT_NUMBER,contact.getContactNumber());
+
+        //update row
+        return sqLiteDatabase.update(Util.TABLE_NAME,contentValues,
+                Util.KEY_ID+"=?",
+                new String[]{String.valueOf(contact.getId())});
+    }
+
+    //delete single contact
+    public void deleteContact(Contact contact){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        sqLiteDatabase.delete(Util.TABLE_NAME,Util.KEY_ID+"=?",new String[]{String.valueOf(contact.getId())});
+
+        sqLiteDatabase.close();
+    }
+
+
 }
