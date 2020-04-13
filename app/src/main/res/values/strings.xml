@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DatabaseSQLite-MissionAndroid1.2.2</string>
+    <string name="drop_table">DROP TABLE IF EXISTS</string>
 </resources>
