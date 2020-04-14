@@ -49,10 +49,14 @@ public class MainActivity extends AppCompatActivity {
 //        databaseHandler.deleteContact(singleContact);
 
 
+        //get count
+        Log.d("Count", "onCreate: "+databaseHandler.getCount());
+
             List<Contact> contactList = databaseHandler.getAllContact();
             for (Contact contact : contactList){
                 Log.d("AllContact", "onCreate: "+contact.getId()+","+contact.getName()+", "+contact.getContactNumber());
             }
+
 
 
     }
